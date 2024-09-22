@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "网页音乐播放器",
+  "version": "1.0",
+  "description": "在指定网页打开时自动播放特定音乐",
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "options_page": "options.html",
+  "web_accessible_resources": [{
+    "resources": ["music/*"],
+    "matches": ["<all_urls>"]
+  }]
+}
